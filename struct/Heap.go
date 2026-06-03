@@ -1,4 +1,4 @@
-package heap
+package data_struct
 
 type Heap[T comparable] struct {
 	Array   []T
