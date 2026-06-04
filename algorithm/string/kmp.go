@@ -1,1 +1,5 @@
 package string
+
+func ExistSubString(str, pat string) bool {
+
+}

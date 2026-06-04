@@ -1,12 +1,9 @@
 package main
 
 import (
-	. "Gocodes/algorithm"
-	. "Gocodes/struct"
+	. "Gocodes/tool"
 )
 
 func main() {
-	g := BuildGraph[MyInt](10, 0.1, true)
-	g.Print()
-	println(g.ExistRing())
+	println(Gcd(192, 128))
 }
