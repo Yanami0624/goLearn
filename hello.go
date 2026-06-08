@@ -1,9 +1,9 @@
 package main
 
 import (
-	. "Gocodes/tool"
+	mygin "Gocodes/gin"
 )
 
 func main() {
-	println(Gcd(192, 128))
+	mygin.Start()
 }
