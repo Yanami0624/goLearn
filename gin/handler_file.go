@@ -2,6 +2,7 @@ package mygin
 
 import (
 	"net/http"
+	"path/filepath"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,7 +13,7 @@ func Upload(ctx *gin.Context) {
 		ctx.String(http.StatusBadRequest, "%+v", err)
 		return
 	}
-	err = ctx.SaveUploadedFile(file, "./" + file.Filename)
+	err = ctx.SaveUploadedFile(file, "./"+file.Filename)
 	if err != nil {
 		ctx.String(http.StatusBadRequest, "%+v", err)
 		return
@@ -21,6 +22,6 @@ func Upload(ctx *gin.Context) {
 }
 
 func Download(ctx *gin.Context) {
-	file:= ctx.Param("filename")
-	ctx.FileAttachment(file, file)
+	filename := filepath.Base(ctx.Param("filename"))
+	ctx.FileAttachment(filepath.Join("static", filename), filename)
 }
