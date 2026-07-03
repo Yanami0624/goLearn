@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package helloworld;
+
+// go_package 告诉 protoc-gen-go 生成的 Go 包应该放在哪里、叫什么。
+// 前半段是 Go import path，分号后面的 pb 是包名。
+option go_package = "Gocodes/grpcdemo/pb;pb";
+
+// Greeter 是一个最小 gRPC 服务：只有一个一元 RPC。
+// 一元 RPC 的意思是：客户端发送 1 个请求，服务端返回 1 个响应。
+service Greeter {
+  rpc SayHello(HelloRequest) returns (HelloReply);
+}
+
+// HelloRequest 是客户端发给服务端的数据结构。
+// 字段后面的数字是 protobuf 字段编号，发布后不要随意改。
+message HelloRequest {
+  string name = 1;
+  int32  age  = 2;
+}
+
+// HelloReply 是服务端返回给客户端的数据结构。
+message HelloReply {
+  string message = 1;
+}
