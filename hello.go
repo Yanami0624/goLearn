@@ -1,9 +1,10 @@
 package main
 
 import (
-	mygin "Gocodes/gin"
+	"Gocodes/concurrent"
+	"fmt"
 )
 
 func main() {
-	mygin.Start()
+	fmt.Println(concurrent.CountSum0(100000))
 }

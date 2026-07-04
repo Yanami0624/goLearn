@@ -5,7 +5,7 @@ import (
 )
 
 func BS_exact[T Comp](arr []T, target T) int {
-	l, r := 0, len(arr) - 1
+	l, r := 0, len(arr)-1
 	for l < r {
 		mid := (l + r) / 2
 		switch {
@@ -24,7 +24,7 @@ func BS_exact[T Comp](arr []T, target T) int {
 }
 
 func BS_leftbound[T Comp](arr []T, target T) int {
-	l, r := 0, len(arr) - 1
+	l, r := 0, len(arr)-1
 	for l < r {
 		mid := (l + r) / 2
 		switch {
@@ -40,7 +40,7 @@ func BS_leftbound[T Comp](arr []T, target T) int {
 }
 
 func BS_rightbound[T Comp](arr []T, target T) int {
-	l, r := 0, len(arr) - 1
+	l, r := 0, len(arr)-1
 	for l < r {
 		mid := (l + r) / 2
 		switch {

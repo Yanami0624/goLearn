@@ -41,7 +41,7 @@ func BuildBinaryTree(n int) *BinaryTreeNode {
 func (root *BinaryTreeNode) Print() {
 	f := func(n *BinaryTreeNode) (_ any) {
 		fmt.Printf("%d ", n.val)
-		return 
+		return
 	}
 	root.Travel_PreOrder(f)
 }

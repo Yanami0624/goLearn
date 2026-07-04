@@ -15,6 +15,7 @@ import (
 func main() {
 	addr := flag.String("addr", "localhost:50051", "gRPC server address")
 	name := flag.String("name", "Go", "name sent to SayHello")
+	age := flag.Int("age", 0, "age_")
 	flag.Parse()
 
 	// 为了让学习示例更短，这里使用 insecure 连接，也就是不启用 TLS。
@@ -34,10 +35,14 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
-	reply, err := client.SayHello(ctx, &pb.HelloRequest{Name: *name})
+	reply, err := client.SayHello(ctx, &pb.HelloRequest{Name: *name, Age: (int32)(*age)})
 	if err != nil {
 		log.Fatalf("SayHello failed: %v", err)
 	}
+
+	log.Printf("server replied: %s", reply.GetMessage())
+
+	reply, _ = client.SayGoodbye(ctx, &pb.GoodbyeRequest{Name: *name})
 
 	log.Printf("server replied: %s", reply.GetMessage())
 }

@@ -6,6 +6,7 @@ import (
 	"log"
 	"net"
 	"strings"
+	"time"
 
 	pb "Gocodes/grpcdemo/pb"
 
@@ -32,8 +33,21 @@ func (s *greeterServer) SayHello(ctx context.Context, req *pb.HelloRequest) (*pb
 		age = 18
 	}
 
+	time.Sleep(time.Second * 4)
+
 	return &pb.HelloReply{
-		Message: "Hello, " + name + "you are " + fmt.Sprintf("%d", age) + " years old",
+		Message: "Hello, " + name + ", you are " + fmt.Sprintf("%d", age) + " years old",
+	}, nil
+}
+
+func (s *greeterServer) SayGoodbye(ctx context.Context, req *pb.GoodbyeRequest) (*pb.HelloReply, error) {
+	name := req.GetName()
+	if name == "" {
+		name = "gRPC learner"
+	}
+
+	return &pb.HelloReply{
+		Message: "Goodbye " + name,
 	}, nil
 }
 
