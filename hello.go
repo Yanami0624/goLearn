@@ -1,10 +1,7 @@
 package main
 
-import (
-	"Gocodes/concurrent"
-	"fmt"
-)
+import "Gocodes/std"
 
 func main() {
-	fmt.Println(concurrent.CountSum0(100000))
+	std.FunHttp()
 }
